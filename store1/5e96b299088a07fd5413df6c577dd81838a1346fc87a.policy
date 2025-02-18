@@ -1,0 +1,10 @@
+@id("allow_one")
+permit(
+  principal is store1::Workload,
+  action == store1::Action::"GET",
+  resource is store1::HTTP_Request
+)
+when {
+  principal has access_token ||
+  principal has Role
+};
